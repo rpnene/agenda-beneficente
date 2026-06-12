@@ -95,7 +95,7 @@ def proximos_finais_de_semana(meses=12):
     """Retorna lista de tuplas (sabado, domingo) cobrindo os próximos N meses a partir de hoje."""
     hoje = datetime.date.today()
     fim = hoje.replace(year=hoje.year + ((hoje.month - 1 + meses) // 12),
-                        month=((hoje.month - 1 + meses) % 12) + 1)
+                        month=((hoje.month - 1 + meses) % 3) + 1)
 
     finais = []
     dias_para_sabado = (5 - hoje.weekday()) % 7
@@ -118,8 +118,7 @@ em {cidades_str}, para o período de {data_inicio} a {data_fim} (sábados e
 domingos apenas).
 
 São considerados "eventos beneficentes": jantares, almoços, feijoadas,
-macarronadas, rifas, bazares, pedágios, festas, leilões, campanhas do
-agasalho/Natal/sangue com data marcada, etc., cuja renda/objetivo seja
+macarronadas com data marcada, etc., cuja renda/objetivo seja
 beneficiar uma entidade, ONG, igreja, associação ou causa social.
 
 PASSOS QUE VOCÊ DEVE SEGUIR:
@@ -128,7 +127,6 @@ PASSOS QUE VOCÊ DEVE SEGUIR:
    - "agenda Blumenau fim de semana eventos"
    - "feijoada beneficente Blumenau OR Gaspar OR Indaial"
    - "site:blumenau.sc.gov.br agenda eventos"
-   - "pedágio beneficente Blumenau"
    - "eventos Gaspar SC agenda cultural"
    - "eventos Indaial SC agenda"
    - busque também páginas de prefeituras, secretarias de turismo, rádios
