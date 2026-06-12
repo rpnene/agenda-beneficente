@@ -155,7 +155,7 @@ def consultar_eventos(finais_de_semana):
 
     response = client.messages.create(
         model=MODEL,
-        max_tokens=4000,
+        max_tokens=8000,
         messages=[{"role": "user", "content": prompt}],
         tools=[{"type": "web_search_20250305", "name": "web_search"}],
     )
@@ -175,12 +175,30 @@ def consultar_eventos(finais_de_semana):
     try:
         dados = json.loads(texto_final)
     except json.JSONDecodeError:
-        # fallback: tenta extrair o primeiro bloco { ... } do texto
-        inicio = texto_final.find("{")
-        fim = texto_final.rfind("}")
-        dados = json.loads(texto_final[inicio:fim + 1])
+        dados = _extrair_json(texto_final)
 
     return dados
+
+
+def _extrair_json(texto):
+    """Varre o texto procurando o primeiro objeto JSON válido,
+    balanceando chaves para lidar com texto extra antes/depois."""
+    for i, ch in enumerate(texto):
+        if ch != "{":
+            continue
+        profundidade = 0
+        for j in range(i, len(texto)):
+            if texto[j] == "{":
+                profundidade += 1
+            elif texto[j] == "}":
+                profundidade -= 1
+                if profundidade == 0:
+                    candidato = texto[i:j + 1]
+                    try:
+                        return json.loads(candidato)
+                    except json.JSONDecodeError:
+                        break  # tenta o próximo "{"
+    raise ValueError(f"Nenhum JSON válido encontrado na resposta:\n{texto[:1000]}")
 
 
 def gerar_html(finais_de_semana, dados):
