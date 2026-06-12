@@ -54,19 +54,25 @@ def carregar_reservas_manuais(url_csv):
             conteudo = resp.read().decode("utf-8")
 
         leitor = csv.DictReader(conteudo.splitlines())
-        for linha in leitor:
-            # Espera colunas: Timestamp, Data, Nome do evento, Entidade promotora, Cidade, Local
+        print(f"Colunas encontradas no CSV: {leitor.fieldnames}")
+        for linha_raw in leitor:
+            # normaliza chaves: remove espaços extras
+            linha = {(k or "").strip(): (v or "").strip() for k, v in linha_raw.items()}
+
             data_raw = linha.get("Data", "").strip()
             if not data_raw:
                 continue
 
-            # Aceita tanto AAAA-MM-DD (Forms) quanto DD/MM/AAAA
-            try:
-                if "-" in data_raw:
-                    dt = datetime.datetime.strptime(data_raw, "%Y-%m-%d").date()
-                else:
-                    dt = datetime.datetime.strptime(data_raw, "%d/%m/%Y").date()
-            except ValueError:
+            # Aceita AAAA-MM-DD, DD/MM/AAAA ou M/D/AAAA (formato do Google Forms)
+            dt = None
+            for fmt in ("%Y-%m-%d", "%m/%d/%Y", "%d/%m/%Y"):
+                try:
+                    dt = datetime.datetime.strptime(data_raw, fmt).date()
+                    break
+                except ValueError:
+                    continue
+            if dt is None:
+                print(f"Aviso: data não reconhecida '{data_raw}', linha ignorada")
                 continue
 
             eventos.append({
@@ -107,27 +113,57 @@ def montar_prompt(finais_de_semana):
     cidades_str = ", ".join(CIDADES)
 
     prompt = f"""
-Pesquise na web e monte uma lista de EVENTOS BENEFICENTES (festas beneficentes,
-jantares/almoços/feijoadas/macarronadas beneficentes, bazares, pedágios
-beneficentes, campanhas solidárias com data marcada, etc.) que ocorram
-em SÁBADOS ou DOMINGOS nas cidades de {cidades_str}, entre {data_inicio} e {data_fim}
-(período de aproximadamente 3 meses a partir de hoje).
+Você é um assistente de pesquisa que monta uma agenda de EVENTOS BENEFICENTES
+em {cidades_str}, para o período de {data_inicio} a {data_fim} (sábados e
+domingos apenas).
 
-Para cada evento encontrado, retorne um item com:
+São considerados "eventos beneficentes": jantares, almoços, feijoadas,
+macarronadas, rifas, bazares, pedágios, festas, leilões, campanhas do
+agasalho/Natal/sangue com data marcada, etc., cuja renda/objetivo seja
+beneficiar uma entidade, ONG, igreja, associação ou causa social.
+
+PASSOS QUE VOCÊ DEVE SEGUIR:
+1. Faça VÁRIAS buscas (pelo menos 5-8), variando os termos, por exemplo:
+   - "evento beneficente Blumenau {data_inicio[3:]}"
+   - "agenda Blumenau fim de semana eventos"
+   - "feijoada beneficente Blumenau OR Gaspar OR Indaial"
+   - "site:blumenau.sc.gov.br agenda eventos"
+   - "pedágio beneficente Blumenau"
+   - "eventos Gaspar SC agenda cultural"
+   - "eventos Indaial SC agenda"
+   - busque também páginas de prefeituras, secretarias de turismo, rádios
+     locais (ex: Blumenau FM, Bom Som), jornais regionais (NSC, Blumenau Hoje),
+     e páginas/Instagram de paróquias, clubes e associações.
+2. Para cada resultado relevante, extraia: data exata, nome do evento,
+   cidade, local, horário e entidade beneficiada.
+3. Inclua APENAS eventos com data específica já divulgada (dia/mês/ano).
+   NÃO inclua eventos recorrentes sem data definida (ex: "todo sábado").
+4. Se a mesma fonte mencionar um evento anual mas sem data da próxima edição
+   confirmada, NÃO inclua — apenas se houver data explícita para o período
+   pesquisado.
+5. NUNCA invente eventos, datas, locais ou entidades. Se não encontrar nada
+   confirmado, retorne a lista "eventos" vazia — isso é uma resposta válida
+   e esperada caso a divulgação ainda não tenha ocorrido.
+6. Ordene os eventos por data, do mais próximo ao mais distante.
+7. Antes de responder, REVISE sua lista: remova qualquer item cuja data
+   não caia em um sábado ou domingo, ou que esteja fora do período
+   {data_inicio} a {data_fim}.
+
+Para cada item da lista final, retorne:
 - data (formato DD/MM/AAAA)
 - dia_semana ("Sábado" ou "Domingo")
-- cidade
+- cidade (exatamente uma de: {cidades_str})
 - nome_evento
 - local
 - horario (se disponível, senão "A confirmar")
 - entidade_beneficiada (se souber, senão "")
 - fonte (URL da fonte da informação)
 
-Se não encontrar nenhum evento confirmado, NÃO invente eventos — retorne a
-lista "eventos" vazia ou apenas com os que encontrar de fato.
-Ordene os eventos por data, do mais próximo ao mais distante.
+FORMATO DE RESPOSTA — MUITO IMPORTANTE:
+Responda SOMENTE com um objeto JSON válido, sem nenhum texto antes ou depois,
+sem markdown, sem ```json, sem comentários. A resposta deve começar com "{{"
+e terminar com "}}", e ser o ÚNICO conteúdo da sua mensagem final:
 
-IMPORTANTE: Responda APENAS com um JSON válido, no formato:
 {{
   "gerado_em": "{datetime.date.today().strftime('%d/%m/%Y')}",
   "eventos": [
@@ -143,8 +179,6 @@ IMPORTANTE: Responda APENAS com um JSON válido, no formato:
     }}
   ]
 }}
-
-Sem texto antes ou depois do JSON, sem markdown, sem ```json.
 """
     return prompt
 
@@ -157,7 +191,7 @@ def consultar_eventos(finais_de_semana):
         model=MODEL,
         max_tokens=8000,
         messages=[{"role": "user", "content": prompt}],
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
+        tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 10}],
     )
 
     # Junta todos os blocos de texto da resposta final
@@ -439,8 +473,15 @@ def gerar_html(finais_de_semana, dados):
 def main():
     finais = proximos_finais_de_semana(MESES_A_FRENTE)
     dados = consultar_eventos(finais)
+    print(f"Eventos encontrados pela IA: {len(dados.get('eventos', []))}")
+    for ev in dados.get("eventos", []):
+        print(f"  - {ev.get('data')} | {ev.get('nome_evento')}")
 
     reservas = carregar_reservas_manuais(URL_RESERVAS_CSV)
+    print(f"Reservas lidas do formulário: {len(reservas)}")
+    for ev in reservas:
+        print(f"  - {ev.get('data')} | {ev.get('nome_evento')}")
+
     if reservas:
         existentes = {(ev.get("data"), ev.get("nome_evento", "").strip().lower())
                        for ev in dados.get("eventos", [])}
