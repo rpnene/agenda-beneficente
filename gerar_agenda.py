@@ -111,7 +111,7 @@ Pesquise na web e monte uma lista de EVENTOS BENEFICENTES (festas beneficentes,
 jantares/almoços/feijoadas/macarronadas beneficentes, bazares, pedágios
 beneficentes, campanhas solidárias com data marcada, etc.) que ocorram
 em SÁBADOS ou DOMINGOS nas cidades de {cidades_str}, entre {data_inicio} e {data_fim}
-(período de aproximadamente 12 meses a partir de hoje).
+(período de aproximadamente 3 meses a partir de hoje).
 
 Para cada evento encontrado, retorne um item com:
 - data (formato DD/MM/AAAA)
