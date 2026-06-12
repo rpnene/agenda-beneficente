@@ -14,7 +14,7 @@ Agendamento sugerido (Linux/Mac - crontab):
 
 Windows - Agendador de Tarefas:
   Criar tarefa diária que execute:
-  python C:\caminho\gerar_agenda.py
+  python C:/caminho/gerar_agenda.py
 """
 
 import os
@@ -30,12 +30,12 @@ MESES_A_FRENTE = 12
 
 # URL do CSV publicado da Google Sheet ligada ao Google Forms de reservas.
 # Deixe em branco ("") se ainda não tiver configurado.
-URL_RESERVAS_CSV = ""
+URL_RESERVAS_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQNPeg2pjF0Qw0osePneOqf5GaPBI3DS9D_NLzTJK1jOgcXlyxJCm9fS4qj4py5ZMeLqa-25I9vLvFT/pub?gid=1675863191&single=true&output=csv"
 
 # Link do Google Forms de reserva, com placeholder {DATA} no parâmetro da
 # pergunta "Data". Exemplo real (substitua o ID da entrada pelo seu):
 # "https://docs.google.com/forms/d/e/SEU_ID/viewform?usp=pp_url&entry.111111111={DATA}"
-URL_FORMULARIO_RESERVA = ""
+URL_FORMULARIO_RESERVA = "https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884={DATA}"
 # --------------------------------------------------------
 
 
