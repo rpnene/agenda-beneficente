@@ -1,0 +1,25 @@
+name: Popular planilha (IA) - semanal
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'   # toda segunda-feira às 08h UTC (05h em SC)
+  workflow_dispatch:
+
+jobs:
+  popular:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependências
+        run: pip install anthropic gspread google-auth
+
+      - name: Popular planilha com eventos da IA
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python popular_planilha.py
