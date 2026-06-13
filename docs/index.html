@@ -13,125 +13,42 @@
     --bg: #f4f6f9;
   }
   * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: #1f2933;
-    padding: 24px;
-  }
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-    overflow: hidden;
-  }
-  header {
-    background: linear-gradient(135deg, var(--azul), #3a7bd5);
-    color: #fff;
-    padding: 28px 32px;
-  }
-  header h1 {
-    margin: 0 0 6px 0;
-    font-size: 1.6rem;
-  }
-  header p {
-    margin: 0;
-    opacity: 0.9;
-    font-size: 0.95rem;
-  }
-  .conteudo {
-    padding: 24px 32px 32px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.92rem;
-  }
-  thead th {
-    background: var(--azul-claro);
-    color: var(--azul);
-    text-align: left;
-    padding: 10px 12px;
-    border-bottom: 2px solid var(--azul);
-    position: sticky;
-    top: 0;
-  }
-  tbody td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #e5e7eb;
-    vertical-align: top;
-  }
+  body { margin: 0; background: var(--bg); color: #1f2933; padding: 24px; }
+  .container { max-width: 1100px; margin: 0 auto; background: #fff; border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.07); overflow: hidden; }
+  header { background: linear-gradient(135deg, var(--azul), #3a7bd5); color: #fff; padding: 28px 32px; }
+  header h1 { margin: 0 0 6px 0; font-size: 1.6rem; }
+  header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+  .conteudo { padding: 24px 32px 32px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  thead th { background: var(--azul-claro); color: var(--azul); text-align: left; padding: 10px 12px;
+              border-bottom: 2px solid var(--azul); position: sticky; top: 0; }
+  tbody td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
   tbody tr:hover { background: #f9fbff; }
   .data { white-space: nowrap; font-weight: 600; color: var(--azul); }
   .dia { font-size: 0.78rem; color: var(--cinza); font-weight: 400; }
-  .badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #fff;
-  }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.78rem;
+            font-weight: 600; color: #fff; }
   .badge-blumenau { background: #1f4e8c; }
   .badge-gaspar { background: #2e8b57; }
   .badge-indaial { background: #b1740f; }
-  .sem-evento td { color: var(--cinza); font-style: italic; }
-  .vazio { text-align: center; }
   .data-livre td { color: var(--cinza); }
   .data-livre .livre { font-style: italic; }
   .acao { text-align: right; white-space: nowrap; }
-  .btn-reservar {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: var(--verde);
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 600;
-    white-space: nowrap;
-  }
+  .btn-reservar { display: inline-block; padding: 6px 14px; border-radius: 999px; background: var(--verde);
+                   color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
   .btn-reservar:hover { background: #246b46; }
-  .btn-desativado {
-    background: #cbd5e1;
-    color: #64748b;
-    cursor: default;
-  }
-  .mes-header td {
-    background: var(--azul);
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 8px 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  footer {
-    text-align: center;
-    padding: 16px;
-    font-size: 0.8rem;
-    color: var(--cinza);
-  }
+  .btn-desativado { background: #cbd5e1; color: #64748b; cursor: default; }
+  .mes-header td { background: var(--azul); color: #fff; font-weight: 700; font-size: 0.95rem;
+                    padding: 8px 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  footer { text-align: center; padding: 16px; font-size: 0.8rem; color: var(--cinza); }
   @media (max-width: 700px) {
     .conteudo { padding: 16px; }
     table, thead, tbody, th, td, tr { display: block; }
     thead { display: none; }
-    tbody tr {
-      margin-bottom: 14px;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 8px;
-    }
+    tbody tr { margin-bottom: 14px; border: 1px solid #e5e7eb; border-radius: 10px; padding: 8px; }
     tbody td { border: none; padding: 4px 8px; }
-    tbody td:before {
-      content: attr(data-label);
-      font-weight: 600;
-      color: var(--azul);
-      display: block;
-      font-size: 0.75rem;
-    }
+    tbody td:before { content: attr(data-label); font-weight: 600; color: var(--azul); display: block; font-size: 0.75rem; }
   }
 </style>
 </head>
@@ -139,7 +56,7 @@
 <div class="container">
   <header>
     <h1>🎗️ Agenda de Eventos Beneficentes</h1>
-    <p>Gaspar/SC · Blumenau/SC · Indaial/SC — período: 13/06/2026 a 14/03/2027</p>
+    <p>Gaspar/SC · Blumenau/SC · Indaial/SC — período: 13/06/2026 a 13/06/2027</p>
   </header>
   <div class="conteudo">
     <table>
@@ -680,11 +597,180 @@
                         <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
                         <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-03-14" target="_blank">Reservar esta data</a></td>
                     </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">20/03/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-03-20" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">21/03/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-03-21" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">27/03/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-03-27" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">28/03/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-03-28" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="mes-header">
+                        <td colspan="6">Abril de 2027</td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">03/04/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-03" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">04/04/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-04" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">10/04/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-10" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">11/04/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-11" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">17/04/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-17" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">18/04/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-18" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">24/04/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-24" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">25/04/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-04-25" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="mes-header">
+                        <td colspan="6">Maio de 2027</td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">01/05/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-01" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">02/05/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-02" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">08/05/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-08" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">09/05/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-09" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">15/05/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-15" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">16/05/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-16" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">22/05/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-22" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">23/05/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-23" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">29/05/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-29" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">30/05/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-05-30" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="mes-header">
+                        <td colspan="6">Junho de 2027</td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">05/06/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-06-05" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">06/06/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-06-06" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">12/06/2027<br><span class="dia">Sábado</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-06-12" target="_blank">Reservar esta data</a></td>
+                    </tr>
+
+                    <tr class="data-livre">
+                        <td class="data">13/06/2027<br><span class="dia">Domingo</span></td>
+                        <td colspan="4" class="livre">Data disponível — nenhum evento registrado</td>
+                        <td class="acao"><a class="btn-reservar" href="https://docs.google.com/forms/d/e/1FAIpQLSflqHKK92JjpM99WjjWSluANqimWKm8rj_vfKPec_97Fbm7xA/viewform?usp=pp_url&entry.1859357884=2027-06-13" target="_blank">Reservar esta data</a></td>
+                    </tr>
       </tbody>
     </table>
   </div>
   <footer>
-    Gerado automaticamente em 13/06/2026 · As informações dependem da disponibilidade de divulgação dos eventos na web e podem mudar — confirme sempre com a organização.
+    Última atualização da lista de eventos: 13/06/2026 ·
+    As informações dependem da divulgação dos eventos e podem mudar — confirme com a organização.
   </footer>
 </div>
 </body>
