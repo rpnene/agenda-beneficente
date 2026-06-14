@@ -19,7 +19,7 @@ from comum import proximos_finais_de_semana
 from planilha import conectar, ler_eventos_ia, ler_eventos_manual, adicionar_eventos_ia
 
 MODEL = "claude-sonnet-4-6"
-CIDADES = ["Gaspar/SC", "Blumenau/SC", "Indaial/SC"]
+CIDADES = ["Gaspar SC", "Blumenau SC", "Indaial SC", "Timbó SC", "Pomerode SC"]
 MESES_A_FRENTE = 12
 
 
