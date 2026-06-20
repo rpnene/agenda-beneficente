@@ -4,7 +4,8 @@ on:
   schedule:
     - cron: '0 9 * * *'   # todo dia às 09h UTC (06h em SC)
   workflow_dispatch:
-
+  repository_dispatch:
+    types: [nova-reserva]
 permissions:
   contents: write
 
