@@ -55,7 +55,7 @@ def main():
     with open("agenda_beneficente.html", "w", encoding="utf-8") as f:
         f.write(html)
 
-    print("Página gerada em agenda_beneficente.html")
+    print("Página gerada em index.html")
 
 
 if __name__ == "__main__":
