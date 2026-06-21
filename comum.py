@@ -93,7 +93,7 @@ def gerar_html(finais_de_semana, eventos, gerado_em, url_formulario_reserva):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agenda de Eventos Beneficentes — Gaspar, Blumenau e Indaial</title>
+<title>Agenda de Eventos Beneficentes — Blumenau, Gaspar, Indaial, Pomerode e Timbó/SC</title>
 <style>
   :root {{
     --azul: #1f4e8c;
@@ -168,6 +168,9 @@ def gerar_html(finais_de_semana, eventos, gerado_em, url_formulario_reserva):
   <footer>
     Última atualização da lista de eventos: {gerado_em} ·
     As informações dependem da divulgação dos eventos e podem mudar — confirme com a organização.
+    Após o cadastramento de um novo evento, a atualização pode levar até 1 miutos. Aguarde.
+    Em caso e dúvida ou necessidade de edição, contatar rpnene@gmail.com.
+    Este serviço é gratuíto e mantido de forma voluntária.
   </footer>
 </div>
 </body>
