@@ -45,13 +45,13 @@ que não seja uma refeição/comida vendida com fins beneficentes.
 
 PASSOS QUE VOCÊ DEVE SEGUIR:
 1. Faça VÁRIAS buscas (pelo menos 5-8), variando os termos, por exemplo:
-   - "feijoada beneficente Blumenau {data_inicio[3:]}"
-   - "jantar beneficente Blumenau OR Gaspar OR Indaial"
-   - "macarronada beneficente Blumenau"
-   - "costelada beneficente Blumenau OR Gaspar OR Indaial"
-   - "carreteiro beneficente Blumenau"
-   - "pastelada beneficente Blumenau OR Indaial"
-   - "almoço beneficente Gaspar SC"
+   - "feijoada beneficente Blumenau "
+   - "jantar beneficente "
+   - "macarronada beneficente "
+   - "costelada beneficente "
+   - "carreteiro beneficente"
+   - "pastelada beneficente"
+   - "almoço beneficente"
    - "site:blumenau.sc.gov.br agenda eventos beneficente"
    - busque também páginas de prefeituras, secretarias de turismo, rádios
      locais (ex: Blumenau FM, Bom Som), jornais regionais (NSC, Blumenau Hoje),
